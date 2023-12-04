@@ -1,4 +1,4 @@
-N = 36
+N = 1000
 
 for a in range(1, N // 2):
     if N*N % (2*(N-a)) == 0:
