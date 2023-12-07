@@ -3,13 +3,13 @@ N = 20
 def sieve(n):
     primes = [True] * (n+1)
     primes[0] = primes[1] = False
-    i = 2
-    while i*i <= n:
-        if primes[i]:
-            for j in range(i*i, n+1, i):
+    p = 2
+    while p*p <= n:
+        if primes[p]:
+            for j in range(p*p, n+1, p):
                 primes[j] = False
-        i += 1
-    return [i for i, p in enumerate(primes) if p]
+        p += 1 if p == 2 else 2
+    return [i for i, v in enumerate(primes) if v]
 
 primes = sieve(N)
 

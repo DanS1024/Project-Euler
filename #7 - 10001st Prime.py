@@ -9,5 +9,5 @@ while count < 10001:
             primes.append(n)
             count += 1
             break
-    n += 1
+    n += 2
 print(primes[-1])
