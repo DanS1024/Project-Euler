@@ -1,0 +1,38 @@
+N = 5
+base = 10
+
+def num(n, base):
+    l = []
+    while n != 0:
+        l.append(n % base)
+        n //= base
+    return l
+
+def check(a):
+    global N, base
+    b = 0
+    for i, x in enumerate(a):
+        b += x * i**N
+    for d in num(b, base):
+        if d >= len(a):
+            return 0
+        a[d] -= 1
+    a[0] = 0
+    return b if all(x == 0 for x in a) else 0
+
+N_ = 1
+while N_ < len(num(N_ * (base-1)**N, base)):
+    N_ += 1
+
+res = 0
+def run(a, n):
+    global N_, res
+    if n == 0 or len(a) == base:
+        if n <= N_ - 2:
+            res += check(a)
+        return
+    for i in range(n+1):
+        run(a+[i], n-i)
+
+run([0], N_)
+print(res)
